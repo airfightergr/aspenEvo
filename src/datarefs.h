@@ -5,19 +5,14 @@
 #ifndef DATAREFS_H
 #define DATAREFS_H
 // System includes
-#include <cstddef>
-#include <iostream>
-#include <string>
-#include <cstring>
+#include <string.h>
 #include <stdio.h>
 
 // X-Plane includes
 #include "XPLMDataAccess.h"
 
-// acfutils includes
 #include <acfutils/log.h>
 #include "acfutils/dr.h"
-//#include "gui_window.h"
 
 // functions
 void aircraft_type();
@@ -26,7 +21,7 @@ void init_datarefs_values();
 void transfer_dref_values();
 void destroy_datarefs();
 
-extern std::string acf_full_path;
+extern char *acf_full_path;
 
 static dr_t xpndr_page, xpndr_ident, xpndr_code, xpndr_ete_hrs, xpndr_ete_min, xpndr_ete_sec;
 static dr_t custom_avionics_bezel;

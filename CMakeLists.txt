@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
-project(aspenEvo VERSION 0.0.1)
+project(aspenEvo VERSION 0.9.0)
 
-set(CMAKE_CXX_STANDARD 17)
-# set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 11)
+#set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Enable all X-Plane SDK APIs up to the newest version.
 add_definitions(-DXPLM200=1 -DXPLM210=1 -DXPLM300=1 -DXPLM301=1 -DXPLM302=1 -DXPLM303=1 -DXPLM400=1 -DXPLM410=1)
@@ -56,7 +56,7 @@ include_directories(
 if (WIN32)
     list(APPEND CMAKE_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/SDK/Libraries/Win")
 #elseif (APPLE)
-#    list(APPEND CMAKE_FRAMEWORK_PATH "${CMAKE_SOURCE_DIR}/SDK/Libraries/Mac")
+    list(APPEND CMAKE_FRAMEWORK_PATH "${CMAKE_SOURCE_DIR}/SDK/Libraries/Mac")
 #elseif (UNIX)
 
 endif ()
@@ -66,11 +66,11 @@ find_package(Threads REQUIRED)
 find_package(OpenGL REQUIRED)
 
 add_library(aspenEvo SHARED
-            src/main.cpp            src/main.h
-            src/datarefs.cpp        src/datarefs.h
-            src/globals.cpp         src/globals.h
-            src/textureLoader.cpp   src/textureLoader.h
-            src/device.cpp          src/device.h
+            src/main.c            src/main.h
+            src/datarefs.c        src/datarefs.h
+            src/globals.c         src/globals.h
+            src/device.c          src/device.h
+            #src/draw_cairo.c      src/draw_cairo.h
 )
 
 target_compile_options(aspenEvo PUBLIC -Wall)
@@ -111,7 +111,6 @@ add_compile_options(-fvisibility=hidden)
 add_compile_options(-Wall -Wpedantic -Wshadow -Wfloat-equal -Wextra)
 add_compile_options(-Wno-unused)
 
-# set(PLUGIN_BUILD_DIR "${CMAKE_SOURCE_DIR}/../dc3_plugin")
 
 set_target_properties(aspenEvo PROPERTIES PREFIX "")
 set_target_properties(aspenEvo PROPERTIES SUFFIX "")

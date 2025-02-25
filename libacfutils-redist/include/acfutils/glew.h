@@ -55,7 +55,8 @@
 #  define	GLEW_BUILD
 # endif
 #endif	/* !LIN && !APL && !defined(__MINGW32__) && !defined(ACFUTILS_DLL) */
-#include "GL/glew.h"
+#include <GL/glew.h>
+
 #include "core.h"
 #include "safe_alloc.h"
 #include "tls.h"
@@ -79,7 +80,6 @@ extern "C" {
 
 #if	LACF_GLEW_USE_NATIVE_TLS
 
-typedef struct GLEWContext GLEWContext_t;
 extern THREAD_LOCAL GLEWContext lacf_glew_per_thread_ctx;
 
 #define	lacf_glew_dllmain_hook(reason)

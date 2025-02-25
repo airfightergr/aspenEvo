@@ -9,8 +9,7 @@ Ilias Tselios. All rights reserved. 2023
 #include "acfutils/log.h"
 #include "acfutils/types.h"
 #include "globals.h"
-#include <cstddef>
-#include <string>
+#include <string.h>
 
 
 // init datarefs
@@ -58,7 +57,7 @@ void init_datarefs(void) {
 }
 
   static char acf_dir_path[512] = "";
-  std::string acf_full_path;
+  char* acf_full_path;
 
   void init_datarefs_values() {
   if (!dr_find(&xpndr_page, "rw/sa227/avionics/gtx327/page")) {
@@ -84,7 +83,7 @@ void init_datarefs(void) {
 
   acf_full_path = acf_dir_path;
 
-  logMsg("acf_full_path: %s", acf_full_path.c_str());
+  logMsg("acf_full_path: %s", acf_full_path);
 }
 
 

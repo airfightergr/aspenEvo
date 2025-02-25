@@ -2,8 +2,8 @@
 // Created by ilias on 10/7/23.
 //
 
-#ifndef KAP140_H
-#define KAP140_H
+#ifndef MAIN_H
+#define MAIN_H
 
 #include "XPLMPlugin.h"
 #include "XPLMProcessing.h"
@@ -17,4 +17,4 @@
 #include "acfutils/dr.h"
 
 
-#endif // _KAP140_H
+#endif // _MAIN_H

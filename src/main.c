@@ -6,22 +6,10 @@ Copyright (c) 2024 - Ilias Tselios
 #include "main.h"
 #include "device.h"
 #include "globals.h"
-
-#if IBM
-#include <windows.h>
-#endif
-#if LIN
-#include <GL/gl.h>
-#endif
-#if __GNUC__ && APL
-#include <OpenGL/gl.h>
-#endif
-#if __GNUC__ && IBM
-#include <GL/gl.h>
-#endif
+#include "draw_cairo.h"
 
 
-char PLUGIN_VER[] = "0.0.1";
+char PLUGIN_VER[] = "0.9.0";
 
 
 // Plugin Init
@@ -40,12 +28,14 @@ PLUGIN_API int XPluginStart( char * outName, char * outSig, char * outDesc ) {
 
     init_globals();
     aspenEvo_init();
+    init_cairo_draw();
 
     return 1;
 }
 
 
 PLUGIN_API int XPluginEnable(void) {
+        enable_cairo_draw();
     return 1;
 }
 
@@ -53,6 +43,8 @@ PLUGIN_API int XPluginEnable(void) {
 
 PLUGIN_API void XPluginDisable(void) {
     aspenEvo_destroy();
+    disable_cairo_draw();
+    cleanup_globals();
 }
 
 
